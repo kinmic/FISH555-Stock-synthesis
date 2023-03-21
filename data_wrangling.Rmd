@@ -71,10 +71,29 @@ indices_formatted<- data.frame(rbind(ind_data,ind_term))
 print(indices_formatted, row.names = FALSE)
 ```
 
+## Age comp
+
+```{r agecomp}
+
+age_raw<- readxl::read_xlsx("./Provided_Example/SuperSimpleParamsAndData.xlsx", sheet = 3)
+
+age_comp_data<-as.data.frame(age_raw)
 
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+age_comp_data$Fleet <- ifelse(age_comp_data$Fleet == "fishery",1,2) # Recode fleet
+age_comp_data$Sex <- ifelse(age_comp_data$Sex == "both",3,-99) #Recode sex
+
+
+#term
+term<- c(-9999, rep(0, ncol(age_comp_data)-1))
+
+# fromatted data
+age_comp_formatted<-data.frame(rbind(age_comp_data, term))
+
+
+
+print(age_comp_formatted, row.names= FALSE)
+
 ```
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
