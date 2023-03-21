@@ -180,14 +180,12 @@
 #_6:  0/1 to float
 #_   fleet      link link_info  extra_se   biasadj     float  #  fleetname
          2         1         0         1         0         0  #  SURVEY1
-         3         1         0         0         0         0  #  SURVEY2
 -9999 0 0 0 0 0
 #
 #_Q_parms(if_any);Qunits_are_ln(q)
 #_          LO            HI          INIT         PRIOR         PR_SD       PR_type      PHASE    env-var    use_dev   dev_mnyr   dev_mxyr     dev_PH      Block    Blk_Fxn  #  parm_name
             -7             5      0.516018             0             1             0          1          0          0          0          0          0          0          0  #  LnQ_base_SURVEY1(2)
              0           0.5             0          0.05             1             0         -4          0          0          0          0          0          0          0  #  Q_extraSD_SURVEY1(2)
-            -7             5       -6.6281             0             1             0          1          0          0          0          0          0          0          0  #  LnQ_base_SURVEY2(3)
 #_no timevary Q parameters
 #
 #_size_selex_patterns
