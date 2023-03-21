@@ -1,0 +1,50 @@
+---
+title: "data wrangling SS"
+author: "M.Kinneen"
+date: "2023-03-21"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(readxl)
+```
+
+## Sheet codes
+1 = catches
+2 = indices
+3 = age comps
+4 = weight at age 
+5 = maturity
+6 = params
+7 = Selectivity 
+8 = Aging error
+
+## Catches
+
+
+```{r catches}
+catch_raw<- readxl::read_xlsx("./Provided_Example/SuperSimpleParamsAndData.xlsx", sheet = 1)
+#_Catch data: yr, seas, fleet, catch, catch_se
+#            -999    1     1     0       0.01
+
+n_rows<- nrow(catch_raw)
+yr<- c(-999,seq(from = min(catch_raw$Year),to = max(catch_raw$Year), by = 1), -9999) # add years
+seas<- c(1,rep(1, n_rows),0)
+fleet <- c(1,rep(1, n_rows),0)
+catch<- c(0,catch_raw$Catch,0)
+catch_se<- c(0.01,rep(0.01, n_rows),0)
+
+catch_formatted<- data.frame(cbind(yr,seas,fleet,catch,catch_se))
+print(catch_formatted, row.names = FALSE)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
