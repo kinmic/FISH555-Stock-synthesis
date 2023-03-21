@@ -30,18 +30,48 @@ catch_raw<- readxl::read_xlsx("./Provided_Example/SuperSimpleParamsAndData.xlsx"
 
 n_rows<- nrow(catch_raw)
 yr<- c(-999,seq(from = min(catch_raw$Year),to = max(catch_raw$Year), by = 1), -9999) # add years
-seas<- c(1,rep(1, n_rows),0)
-fleet <- c(1,rep(1, n_rows),0)
-catch<- c(0,catch_raw$Catch,0)
-catch_se<- c(0.01,rep(0.01, n_rows),0)
+seas<- c(1,rep(1, n_rows),0) #seasons
+fleet <- c(1,rep(1, n_rows),0) #fleets
+catch<- c(0,catch_raw$Catch,0) #catch
+catch_se<- c(0.01,rep(0.01, n_rows),0) #standard error
 
 catch_formatted<- data.frame(cbind(yr,seas,fleet,catch,catch_se))
 print(catch_formatted, row.names = FALSE)
 ```
 
-## Including Plots
+## Indices
 
-You can also embed plots, for example:
+`You can also embed plots, for example:
+```{r indices}
+
+indices_raw<- readxl::read_xlsx("./Provided_Example/SuperSimpleParamsAndData.xlsx", sheet = 2)
+
+## Data
+
+#Examples
+#_yr month fleet obs stderr
+# 1977 7 2 339689 0.3 #_ SURVEY1
+
+n_rows<-nrow(indices_raw) # define number of rows
+
+yr<- indices_raw$Year # define years
+month <- indices_raw$Month # months of surveys
+fleets <- rep(2,length(yr)) #specify fleets
+obs<- indices_raw$Observation
+stderr <- indices_raw$Error
+
+ind_data<- cbind(yr,month,fleets,obs,stderr)
+
+#Terminator
+ind_term<- cbind(-9999,1,1,1,1)
+
+#combine data
+indices_formatted<- data.frame(rbind(ind_data,ind_term))
+
+print(indices_formatted, row.names = FALSE)
+```
+
+
 
 ```{r pressure, echo=FALSE}
 plot(pressure)
