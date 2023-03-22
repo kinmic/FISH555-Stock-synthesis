@@ -10,7 +10,7 @@
 #C data file for simple example
 #V3.30.21.00;_safe;_compile_date:_Feb 10 2023;_Stock_Synthesis_by_Richard_Methot_(NOAA)_using_ADMB_13.1
 1971 #_StartYr
-2001 #_EndYr
+2020 #_EndYr
 1 #_Nseas
  12 #_months/season
 2 #_Nsubseasons (even number, minimum is 2)
@@ -18,7 +18,7 @@
 2 #_Ngenders: 1, 2, -1  (use -1 for 1 sex setup with SSB multiplied by female_frac parameter)
 40 #_Nages=accumulator age, first age is always age 0
 1 #_Nareas
-3 #_Nfleets (including surveys)
+2 #_Nfleets (including surveys)
 #_fleet_type: 1=catch fleet; 2=bycatch only fleet; 3=survey; 4=predator(M2) 
 #_sample_timing: -1 for fishing fleet to use season-long catch-at-age for observations, or 1 to use observation month;  (always 1 for surveys)
 #_fleet_area:  area the fleet/survey operates in 
@@ -28,7 +28,6 @@
 #_fleet_type fishery_timing area catch_units need_catch_mult fleetname
  1 -1 1 1 0 FISHERY  # 1
  3 1 1 2 0 SURVEY1  # 2
- 3 1 1 2 0 SURVEY2  # 3
 #Bycatch_fleet_input_goes_next
 #a:  fleet index
 #b:  1=include dead bycatch in total dead catch for F0.1 and MSY optimizations and forecast ABC; 2=omit from total catch for these purposes (but still include the mortality)
@@ -102,7 +101,6 @@
 #_Fleet Units Errtype SD_Report
 1 1 0 0 # FISHERY
 2 1 0 1 # SURVEY1
-3 0 0 0 # SURVEY2
 #_yr    month   fleet   obs   stderr
   1977     7      2 128800.0   0.25 #Survey 1 start
   1980     7      2 134405.0   0.25
@@ -119,7 +117,7 @@
   2013     7      2 115779.0   0.25
   2016     7      2  57715.3   0.25
   2019     7      2  62757.0   0.25 # Survey 1 end
- -9999     1      1      1.0   1.00 # terminator for survey obs
+  -9999     1      1      1.0   1.00 # terminator for survey obs
 #
 0 #_N_fleets_with_discard
 #_discard_units (1=same_as_catchunits(bio/num); 2=fraction; 3=numbers)
@@ -153,7 +151,6 @@
 #_mintailcomp addtocomp combM+F CompressBins CompError ParmSelect minsamplesize
 0 1e-07 0 0 0 0 1 #_fleet:1_FISHERY
 0 1e-07 0 0 0 0 1 #_fleet:2_SURVEY1
-0 1e-07 0 0 0 0 1 #_fleet:3_SURVEY2
 # sex codes:  0=combined; 1=use female only; 2=use male only; 3=use both as joint sexxlength distribution
 # partition codes:  (0=combined; 1=discard; 2=retained
 25 #_N_LengthBins; then enter lower edge of each length bin
@@ -219,7 +216,6 @@
 #_mintailcomp addtocomp combM+F CompressBins CompError ParmSelect minsamplesize
 0 1e-07 1 0 0 0 1 #_fleet:1_FISHERY
 0 1e-07 1 0 0 0 1 #_fleet:2_SURVEY1
-0 1e-07 1 0 0 0 1 #_fleet:3_SURVEY2
 1 #_Lbin_method_for_Age_Data: 1=poplenbins; 2=datalenbins; 3=lengths
 # sex codes:  0=combined; 1=use female only; 2=use male only; 3=use both as joint sexxlength distribution
 # partition codes:  (0=combined; 1=discard; 2=retained
@@ -289,7 +285,7 @@
   2013     7     2   3         0        1       1      -1   200  2  0  8  9 17 13 18  7  9   8   2   5   4   0   5   0   0  0  3  4 14  8  7 15 10 12   5   0   2   4   3   6   0   0
   2016     7     2   3         0        1       1      -1   200  3  3  7  8 10 13 14 12 11   9   6   3   3   3   3   0   0  0  5  6 10  7  9 12  6 10   3   9   6   4   1   4   0   0
   2019     7     2   3         0        1       1      -1   200  0  2  7  9 22 22 13  5 12   6   4   2   7   0   4   0   0  0  4  2  7 15 20  8  5  6   3   3   6   3   1   2   0   0
- -9999     0     0   0         0        0       0       0     0  0  0  0  0  0  0  0  0  0   0   0   0   0   0   0   0   0  0  0  0  0  0  0  0  0  0   0   0   0   0   0   0   0   0 #Survey_end
+ -9999     0     0   0         0        0       0       0     0  0  0  0  0  0  0  0  0  0   0   0   0   0   0   0   0   0  0  0  0  0  0  0  0  0  0   0   0   0   0   0   0   0   0    #Survey_end
 #
 1 #_Use_MeanSize-at-Age_obs (0/1)
 # sex codes:  0=combined; 1=use female only; 2=use male only; 3=use both as joint sexxlength distribution

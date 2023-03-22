@@ -8,7 +8,7 @@
 #C growth parameters are estimated
 #C spawner-recruitment bias adjustment Not tuned For optimality
 #_data_and_control_files: data.ss // control.ss
-0  # 0 means do not read wtatage.ss; 1 means read and use wtatage.ss and also read and use growth parameters
+1  # 0 means do not read wtatage.ss; 1 means read and use wtatage.ss and also read and use growth parameters
 1  #_N_Growth_Patterns (Growth Patterns, Morphs, Bio Patterns, GP are terms used interchangeably in SS3)
 1 #_N_platoons_Within_GrowthPattern 
 #_Cond 1 #_Platoon_within/between_stdev_ratio (no read if N_platoons=1)
@@ -60,7 +60,8 @@
 0 #_SD_add_to_LAA (set to 0.1 for SS2 V1.x compatibility)
 0 #_CV_Growth_Pattern:  0 CV=f(LAA); 1 CV=F(A); 2 SD=F(LAA); 3 SD=F(A); 4 logSD=F(A)
 #
-1 #_maturity_option:  1=length logistic; 2=age logistic; 3=read age-maturity matrix by growth_pattern; 4=read age-fecundity; 5=disabled; 6=read length-maturity
+3 #_maturity_option:  1=length logistic; 2=age logistic; 3=read age-maturity matrix by growth_pattern; 4=read age-fecundity; 5=disabled; 6=read length-maturity
+0 0.002617801 0.01196745 0.04761905 0.1341501 0.2720733 0.4274815 0.5670227 0.676792 0.7574094 0.8149188 0.8556544 0.8846931 0.9056127 0.9209329 0.9323677 0.9410123 0.947655 0.952822 0.9569062 0.9601746 0.9627967 0.9649418 0.9666807 0.9681208 0.9693351 0.9703191 0.9711814 0.9718617 0.9724624 0.9729894 0.9734021 0.973773 0.9740603 0.9743346 0.9745757 0.9747626 0.9749413 0.9750913 0.9751905 0.9753766
 1 #_First_Mature_Age
 1 #_fecundity_at_length option:(1)eggs=Wt*(a+b*Wt);(2)eggs=a*L^b;(3)eggs=a*Wt^b; (4)eggs=a+b*L; (5)eggs=a+b*W
 0 #_hermaphroditism option:  0=none; 1=female-to-male age-specific fxn; -1=male-to-female age-specific fxn
@@ -70,7 +71,7 @@
 #_growth_parms
 #_ LO HI INIT PRIOR PR_SD PR_type PHASE env_var&link dev_link dev_minyr dev_maxyr dev_PH Block Block_Fxn
 # Sex: 1  BioPattern: 1  NatMort
- 0.05 0.15 0.1 0.1 0.8 0 -3 0 0 0 0 0 0 0 # NatM_uniform_Fem_GP_1
+ 0.05 0.15 0.125 0.1 0.8 0 -3 0 0 0 0 0 0 0 # NatM_uniform_Fem_GP_1
 # Sex: 1  BioPattern: 1  Growth
  -10 45 21.6535 36 10 6 2 0 0 0 0 0 0 0 # L_at_Amin_Fem_GP_1
  40 90 71.6493 70 10 6 4 0 0 0 0 0 0 0 # L_at_Amax_Fem_GP_1
@@ -86,7 +87,7 @@
  -3 3 1 1 0.8 0 -3 0 0 0 0 0 0 0 # Eggs/kg_inter_Fem_GP_1
  -3 3 0 0 0.8 0 -3 0 0 0 0 0 0 0 # Eggs/kg_slope_wt_Fem_GP_1
 # Sex: 2  BioPattern: 1  NatMort
- 0.05 0.15 0.1 0.1 0.8 0 -3 0 0 0 0 0 0 0 # NatM_uniform_Mal_GP_1
+ 0.05 0.15 0.135 0.1 0.8 0 -3 0 0 0 0 0 0 0 # NatM_uniform_Mal_GP_1
 # Sex: 2  BioPattern: 1  Growth
  0 45 0 36 10 0 -3 0 0 0 0 0 0 0 # L_at_Amin_Mal_GP_1
  40 90 69.5362 70 10 6 4 0 0 0 0 0 0 0 # L_at_Amax_Mal_GP_1
@@ -121,8 +122,8 @@
 0  # 0/1 to use steepness in initial equ recruitment calculation
 0  #  future feature:  0/1 to make realized sigmaR a function of SR curvature
 #_          LO            HI          INIT         PRIOR         PR_SD       PR_type      PHASE    env-var    use_dev   dev_mnyr   dev_mxyr     dev_PH      Block    Blk_Fxn #  parm_name
-             3            31       8.81505          10.3            10             0          1          0          0          0          0          0          0          0 # SR_LN(R0)
-           0.2             1      0.614248           0.7          0.05             1         -4          0          0          0          0          0          0          0 # SR_BH_steep
+             3            31           9.2          10.3            10             0          1          0          0          0          0          0          0          0 # SR_LN(R0)
+           0.2             1           0.7            0.7          0.05             1         -4          0          0          0          0          0          0          0 # SR_BH_steep
              0             2           0.6           0.8           0.8             0         -4          0          0          0          0          0          0          0 # SR_sigmaR
             -5             5             0             0             1             0         -4          0          0          0          0          0          0          0 # SR_regime
              0             0             0             0             0             0        -99          0          0          0          0          0          0          0 # SR_autocorr
@@ -208,9 +209,8 @@
 #Pattern:_42; parm=special+3+2; cubic spline; like 27, with 2 additional param for scaling (average over bin range)
 #_discard_options:_0=none;_1=define_retention;_2=retention&mortality;_3=all_discarded_dead;_4=define_dome-shaped_retention
 #_Pattern Discard Male Special
- 1 0 0 0 # 1 FISHERY
- 1 0 0 0 # 2 SURVEY1
- 0 0 0 0 # 3 SURVEY2
+ 0 0 0 0 # 1 FISHERY
+ 0 0 0 0 # 2 SURVEY1
 #
 #_age_selex_patterns
 #Pattern:_0; parm=0; selex=1.0 for ages 0 to maxage
@@ -231,27 +231,20 @@
 #Pattern:_42; parm=2+special+3; // cubic spline; with 2 additional param for scaling (average over bin range)
 #Age patterns entered with value >100 create Min_selage from first digit and pattern from remainder
 #_Pattern Discard Male Special
- 11 0 0 0 # 1 FISHERY
- 11 0 0 0 # 2 SURVEY1
- 11 0 0 0 # 3 SURVEY2
+ 20 0 0 0 # 4 Type12_age_logistic_Survey1
+ 12 0 0 0 # 1 Type20_age_double-normal_Fishery1
 #
 #_          LO            HI          INIT         PRIOR         PR_SD       PR_type      PHASE    env-var    use_dev   dev_mnyr   dev_mxyr     dev_PH      Block    Blk_Fxn  #  parm_name
-# 1   FISHERY LenSelex
-            19            80       53.6411            50          0.01             1          2          0          0          0          0          0          0          0  #  Size_inflection_FISHERY(1)
-          0.01            60       18.9232            15          0.01             1          3          0          0          0          0          0          0          0  #  Size_95%width_FISHERY(1)
-# 2   SURVEY1 LenSelex
-            19            70        36.653            30          0.01             1          2          0          0          0          0          0          0          0  #  Size_inflection_SURVEY1(2)
-          0.01            60       6.59179            10          0.01             1          3          0          0          0          0          0          0          0  #  Size_95%width_SURVEY1(2)
-# 3   SURVEY2 LenSelex
-# 1   FISHERY AgeSelex
-             0            40             0             5            99             0        -99          0          0          0          0          0          0          0  #  minage@sel=1_FISHERY(1)
-             0            40            40             6            99             0        -99          0          0          0          0          0          0          0  #  maxage@sel=1_FISHERY(1)
-# 2   SURVEY1 AgeSelex
-             0            40             0             5            99             0        -99          0          0          0          0          0          0          0  #  minage@sel=1_SURVEY1(2)
-             0            40            40             6            99             0        -99          0          0          0          0          0          0          0  #  maxage@sel=1_SURVEY1(2)
-# 3   SURVEY2 AgeSelex
-             0            40             0             5            99             0        -99          0          0          0          0          0          0          0  #  minage@sel=1_SURVEY2(3)
-             0            40             0             6            99             0        -99          0          0          0          0          0          0          0  #  maxage@sel=1_SURVEY2(3)
+# 4   Type20_age_double-normal AgeSelex
+             1            20           12             6             5             0          2          0          0          0          0          0          0          0  #  Age_DblN_peak_Type20_age_double-normal(4)
+            -7             7           0.1          -0.5            2             0          3          0          0          0          0          0          0          0  #  Age_DblN_top_logit_Type20_age_double-normal(4)
+            -5            10           3            1.75            5             0          3          0          0          0          0          0          0          0  #  Age_DblN_ascend_se_Type20_age_double-normal(4)
+            -5            10           6            0.1             2             0          4          0          0          0          0          0          0          0  #  Age_DblN_descend_se_Type20_age_double-normal(4)
+          -999            15          -999            -1             5             0        -99          0          0          0          0          0          0          0  #  Age_DblN_start_logit_Type20_age_double-normal(4)
+          -999            15            0.8            1             5             0          4          0          0          0          0          0          0          0  #  Age_DblN_end_logit_Type20_age_double-normal(4)
+# 1   Type12_age_logistic AgeSelex
+             1            20            4             5          0.01             1          2          0          0          0          0          0          0          0  #  Age_inflection_Type12_age_logistic(1)
+          0.01            10            2             2          0.01             1          3          0          0          0          0          0          0          0  #  Age_95%width_Type12_age_logistic(1)
 #_No_Dirichlet parameters
 #_no timevary selex parameters
 #

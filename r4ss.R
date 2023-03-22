@@ -2,6 +2,7 @@ my_dir<- "C:/FISH_555/FISH_555/FISH555-Stock-synthesis/Provided_Example"
 
 library(r4ss)
 
+
 replist <- SS_output(
   dir = my_dir,
   verbose = TRUE,
