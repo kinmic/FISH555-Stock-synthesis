@@ -71,7 +71,7 @@
 #_growth_parms
 #_ LO HI INIT PRIOR PR_SD PR_type PHASE env_var&link dev_link dev_minyr dev_maxyr dev_PH Block Block_Fxn
 # Sex: 1  BioPattern: 1  NatMort
- 0.05 0.15 0.125 0.1 0.8 0 -3 0 0 0 0 0 0 0 # NatM_uniform_Fem_GP_1
+ 0.05 0.15 0.125 0.1 0.8 0 3 0 0 0 0 0 0 0 # NatM_uniform_Fem_GP_1
 # Sex: 1  BioPattern: 1  Growth
  -10 45 21.6535 36 10 6 2 0 0 0 0 0 0 0 # L_at_Amin_Fem_GP_1
  40 90 71.6493 70 10 6 4 0 0 0 0 0 0 0 # L_at_Amax_Fem_GP_1
@@ -87,7 +87,7 @@
  -3 3 1 1 0.8 0 -3 0 0 0 0 0 0 0 # Eggs/kg_inter_Fem_GP_1
  -3 3 0 0 0.8 0 -3 0 0 0 0 0 0 0 # Eggs/kg_slope_wt_Fem_GP_1
 # Sex: 2  BioPattern: 1  NatMort
- 0.05 0.15 0.135 0.1 0.8 0 -3 0 0 0 0 0 0 0 # NatM_uniform_Mal_GP_1
+ 0.05 0.15 0.1 0.9 0.8 0 3 0 0 0 0 0 0 0 # NatM_uniform_Mal_GP_1
 # Sex: 2  BioPattern: 1  Growth
  0 45 0 36 10 0 -3 0 0 0 0 0 0 0 # L_at_Amin_Mal_GP_1
  40 90 69.5362 70 10 6 4 0 0 0 0 0 0 0 # L_at_Amax_Mal_GP_1
@@ -122,15 +122,15 @@
 0  # 0/1 to use steepness in initial equ recruitment calculation
 0  #  future feature:  0/1 to make realized sigmaR a function of SR curvature
 #_          LO            HI          INIT         PRIOR         PR_SD       PR_type      PHASE    env-var    use_dev   dev_mnyr   dev_mxyr     dev_PH      Block    Blk_Fxn #  parm_name
-             3            31           9.2            11            10             0          1          0          0          0          0          0          0          0 # SR_LN(R0)
+             3            31           8              11            10             0          1          0          0          0          0          0          0          0 # SR_LN(R0)
            0.2             1           0.7            0.7          0.05            1         -4          0          0          0          0          0          0          0 # SR_BH_steep
-             0             2           0.6           0.8           0.8             0         -4          0          0          0          0          0          0          0 # SR_sigmaR
+             0             2           0.6           0.8           0.8             0          4          0          0          0          0          0          0          0 # SR_sigmaR
             -5             5             0             0             1             0         -4          0          0          0          0          0          0          0 # SR_regime
              0             0             0             0             0             0        -99          0          0          0          0          0          0          0 # SR_autocorr
 #_no timevary SR parameters
 1 #do_recdev:  0=none; 1=devvector (R=F(SSB)+dev); 2=deviations (R=F(SSB)+dev); 3=deviations (R=R0*dev; dev2=R-f(SSB)); 4=like 3 with sum(dev2) adding penalty
 1971 # first year of main recr_devs; early devs can preceed this era
-2001 # last year of main recr_devs; forecast devs start in following year
+2011 # last year of main recr_devs; forecast devs start in following year
 2 #_recdev phase 
 1 # (0/1) to read 13 advanced options
  0 #_recdev_early_start (0=none; neg value makes relative to recdev_start)
@@ -236,15 +236,15 @@
 #
 #_          LO            HI          INIT         PRIOR         PR_SD       PR_type      PHASE    env-var    use_dev   dev_mnyr   dev_mxyr     dev_PH      Block    Blk_Fxn  #  parm_name
 # 4   Type20_age_double-normal AgeSelex
-             1            20           12             6             5             0          2          0          0          0          0          0          0          0  #  Age_DblN_peak_Type20_age_double-normal(4)
-            -7             7           0.1          -0.5            2             0          3          0          0          0          0          0          0          0  #  Age_DblN_top_logit_Type20_age_double-normal(4)
-            -5            10           3            1.75            5             0          3          0          0          0          0          0          0          0  #  Age_DblN_ascend_se_Type20_age_double-normal(4)
-            -5            10           6            0.1             2             0          4          0          0          0          0          0          0          0  #  Age_DblN_descend_se_Type20_age_double-normal(4)
-          -999            15          -999            -1             5             0        -99          0          0          0          0          0          0          0  #  Age_DblN_start_logit_Type20_age_double-normal(4)
-          -999            15            0.8            1             5             0          4          0          0          0          0          0          0          0  #  Age_DblN_end_logit_Type20_age_double-normal(4)
-# 1   Type12_age_logistic AgeSelex
-             1            20            4             5          0.01             1          2          0          0          0          0          0          0          0  #  Age_inflection_Type12_age_logistic(1)
-          0.01            10            2             2          0.01             1          3          0          0          0          0          0          0          0  #  Age_95%width_Type12_age_logistic(1)
+             1            20           12             6             5             0           2          0          0          0          0          0          0          0  #  Age_DblN_peak_Type20_age_double-normal(4)
+            -7             7           0.1          -0.5            2             0           3          0          0          0          0          0          0          0  #  Age_DblN_top_logit_Type20_age_double-normal(4)
+           -15            10           3            1.75            5             0           3          0          0          0          0          0          0         0  #  Age_DblN_ascend_se_Type20_age_double-normal(4)
+            -5            10           6            0.1             2             0           4          0          0          0          0          0          0          0  #  Age_DblN_descend_se_Type20_age_double-normal(4)
+          -999            15          -999            -1             5            0          99          0          0          0          0          0          0          0  #  Age_DblN_start_logit_Type20_age_double-normal(4)
+          -999            15           0.8            1             5            0            4          0          0          0          0          0          0          0  #  Age_DblN_end_logit_Type20_age_double-normal(4)
+# 1   Type12_age_logistic AgeSelex #########################################################################################################################################################################################
+             1            20            4             5          0.01             1           2          0          0          0          0          0          0          0  #  Age_inflection_Type12_age_logistic(1)
+          0.01            10            2             2          0.01             1           3          0          0          0          0          0          0          0  #  Age_95%width_Type12_age_logistic(1)
 #_No_Dirichlet parameters
 #_no timevary selex parameters
 #
@@ -266,8 +266,10 @@
  #_5=mult_by_agecomp_N
  #_6=mult_by_size-at-age_N
  #_7=mult_by_generalized_sizecomp
-#_Factor  Fleet  Value
- -9999   1    0  # terminator
+#_Factor    Fleet     Value
+ 5            1         0.73          # Fishery
+ 5            2         0.55           # Survey
+ -9999        1         0             # terminator
 #
 4 #_maxlambdaphase
 1 #_sd_offset; must be 1 if any growthCV, sigmaR, or survey extraSD is an estimated parameter
